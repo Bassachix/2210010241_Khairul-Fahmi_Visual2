@@ -1,8 +1,8 @@
 object Form5: TForm5
-  Left = 604
-  Top = 282
-  Width = 384
-  Height = 387
+  Left = 1055
+  Top = 301
+  Width = 383
+  Height = 334
   Caption = 'SATUAN'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,85 +11,86 @@ object Form5: TForm5
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
     Left = 32
     Top = 24
-    Width = 28
+    Width = 29
     Height = 13
-    Caption = 'NAME'
+    Caption = 'NAMA'
   end
   object lbl2: TLabel
     Left = 32
     Top = 56
     Width = 52
     Height = 13
-    Caption = 'DESKRIPSI'
+    Caption = 'DEKSRIPSI'
   end
   object lbl3: TLabel
     Left = 32
-    Top = 280
-    Width = 79
+    Top = 264
+    Width = 80
     Height = 13
-    Caption = 'MASUKAN NAME'
+    Caption = 'MASUKAN NAMA'
   end
   object edt1: TEdit
-    Left = 128
+    Left = 96
     Top = 24
-    Width = 225
+    Width = 169
     Height = 21
-    ReadOnly = True
     TabOrder = 0
+    OnKeyPress = edt1KeyPress
   end
   object edt2: TEdit
-    Left = 128
+    Left = 96
     Top = 56
-    Width = 225
+    Width = 169
     Height = 21
-    ReadOnly = True
     TabOrder = 1
   end
   object btn1: TButton
-    Left = 32
-    Top = 96
+    Left = 272
+    Top = 24
     Width = 75
     Height = 25
-    Caption = 'NEW'
+    Caption = '&BARU'
     TabOrder = 2
     OnClick = btn1Click
   end
   object btn2: TButton
-    Left = 112
-    Top = 96
+    Left = 32
+    Top = 88
     Width = 75
     Height = 25
-    Caption = 'INSERT'
+    Caption = 'SIMPAN'
     TabOrder = 3
     OnClick = btn2Click
   end
   object btn3: TButton
-    Left = 192
-    Top = 96
+    Left = 152
+    Top = 88
     Width = 75
     Height = 25
-    Caption = 'UPDATE'
+    Caption = 'UBAH'
     TabOrder = 4
     OnClick = btn3Click
   end
   object btn4: TButton
     Left = 272
-    Top = 96
+    Top = 56
     Width = 75
     Height = 25
-    Caption = 'BATAL'
+    Caption = '&BATAL'
     TabOrder = 5
     OnClick = btn4Click
   end
   object dbgrd1: TDBGrid
     Left = 32
-    Top = 136
-    Width = 320
+    Top = 120
+    Width = 313
     Height = 129
     DataSource = DataModule4.ds_satuan
     TabOrder = 6
@@ -102,27 +103,19 @@ object Form5: TForm5
   end
   object edt3: TEdit
     Left = 120
-    Top = 280
-    Width = 145
+    Top = 264
+    Width = 225
     Height = 21
     TabOrder = 7
-  end
-  object btn5: TButton
-    Left = 272
-    Top = 280
-    Width = 75
-    Height = 25
-    Caption = 'CARI'
-    TabOrder = 8
-    OnClick = btn5Click
+    OnChange = edt3Change
   end
   object btn6: TButton
     Left = 272
-    Top = 312
+    Top = 88
     Width = 75
     Height = 25
-    Caption = 'REFRESH'
-    TabOrder = 9
+    Caption = 'HAPUS'
+    TabOrder = 8
     OnClick = btn6Click
   end
 end

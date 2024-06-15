@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 492
-  Top = 290
+  Left = 452
+  Top = 329
   Width = 407
   Height = 241
   Caption = 'MAIN MENU'
@@ -12,12 +12,13 @@ object Form1: TForm1
   Font.Style = []
   Menu = mm1
   OldCreateOrder = False
+  Position = poScreenCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
-    Left = 96
-    Top = 40
+    Left = 112
+    Top = 48
     Width = 154
     Height = 19
     Caption = 'Nama : Khairul Fahmi'
@@ -29,7 +30,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object lbl2: TLabel
-    Left = 96
+    Left = 112
     Top = 72
     Width = 138
     Height = 19
@@ -42,7 +43,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object lbl3: TLabel
-    Left = 96
+    Left = 112
     Top = 104
     Width = 197
     Height = 19
@@ -89,6 +90,10 @@ object Form1: TForm1
       object mniBARANG1: TMenuItem
         Caption = 'BARANG'
         OnClick = mniBARANG1Click
+      end
+      object mniUSER1: TMenuItem
+        Caption = 'USER'
+        OnClick = mniUSER1Click
       end
     end
     object mniRANSAKSI1: TMenuItem

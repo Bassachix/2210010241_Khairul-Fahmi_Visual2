@@ -1,8 +1,8 @@
 object Form6: TForm6
-  Left = 492
-  Top = 273
-  Width = 600
-  Height = 359
+  Left = 888
+  Top = 302
+  Width = 611
+  Height = 348
   Caption = 'USER'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,8 @@ object Form6: TForm6
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
@@ -30,9 +32,9 @@ object Form6: TForm6
   object lbl3: TLabel
     Left = 24
     Top = 80
-    Width = 54
+    Width = 76
     Height = 13
-    Caption = 'FULL NAME'
+    Caption = 'NAMA LENGKAP'
   end
   object lbl4: TLabel
     Left = 24
@@ -70,114 +72,107 @@ object Form6: TForm6
     Caption = 'ALAMAT'
   end
   object lbl9: TLabel
-    Left = 136
-    Top = 280
-    Width = 111
+    Left = 128
+    Top = 272
+    Width = 133
     Height = 13
-    Caption = 'MASUKKAN FULL NAME'
+    Caption = 'MASUKKAN NAMA LENGKAP'
   end
   object edt1: TEdit
-    Left = 88
+    Left = 104
     Top = 16
     Width = 161
     Height = 21
-    ReadOnly = True
     TabOrder = 0
   end
   object edt2: TEdit
-    Left = 88
+    Left = 104
     Top = 48
     Width = 161
     Height = 21
-    ReadOnly = True
     TabOrder = 1
   end
   object edt3: TEdit
-    Left = 88
+    Left = 104
     Top = 80
     Width = 161
     Height = 21
-    ReadOnly = True
     TabOrder = 2
+    OnKeyPress = edt3KeyPress
   end
   object edt4: TEdit
-    Left = 88
+    Left = 104
     Top = 112
     Width = 161
     Height = 21
-    ReadOnly = True
     TabOrder = 3
   end
   object edt5: TEdit
-    Left = 88
+    Left = 104
     Top = 144
     Width = 161
     Height = 21
-    ReadOnly = True
     TabOrder = 4
   end
   object edt6: TEdit
-    Left = 88
+    Left = 104
     Top = 176
     Width = 161
     Height = 21
-    ReadOnly = True
     TabOrder = 5
   end
   object edt7: TEdit
-    Left = 88
+    Left = 104
     Top = 208
     Width = 161
     Height = 21
-    ReadOnly = True
     TabOrder = 6
   end
   object edt8: TEdit
-    Left = 88
+    Left = 104
     Top = 240
     Width = 161
     Height = 21
-    ReadOnly = True
     TabOrder = 7
   end
   object btn1: TButton
-    Left = 256
+    Left = 512
     Top = 240
     Width = 75
     Height = 25
-    Caption = 'NEW'
+    Caption = '&BARU'
     TabOrder = 8
     OnClick = btn1Click
   end
   object btn2: TButton
-    Left = 336
+    Left = 272
     Top = 240
     Width = 75
     Height = 25
-    Caption = 'INSERT'
+    Caption = 'SIMPAN'
     TabOrder = 9
     OnClick = btn2Click
   end
   object btn3: TButton
-    Left = 416
+    Left = 352
     Top = 240
     Width = 75
     Height = 25
-    Caption = 'UPDATE'
+    Caption = 'UBAH'
     TabOrder = 10
     OnClick = btn3Click
   end
   object btn4: TButton
-    Left = 496
-    Top = 240
+    Left = 512
+    Top = 272
     Width = 75
     Height = 25
-    Caption = 'BATAL'
+    Caption = '&BATAL'
     TabOrder = 11
     OnClick = btn4Click
   end
   object dbgrd1: TDBGrid
-    Left = 256
+    Left = 272
     Top = 16
     Width = 313
     Height = 217
@@ -191,28 +186,20 @@ object Form6: TForm6
     OnCellClick = dbgrd1CellClick
   end
   object edt9: TEdit
-    Left = 256
-    Top = 280
-    Width = 153
+    Left = 272
+    Top = 272
+    Width = 233
     Height = 21
     TabOrder = 13
+    OnChange = edt9Change
   end
   object btn5: TButton
-    Left = 416
-    Top = 280
+    Left = 432
+    Top = 240
     Width = 75
     Height = 25
-    Caption = 'CARI'
+    Caption = 'HAPUS'
     TabOrder = 14
     OnClick = btn5Click
-  end
-  object btn6: TButton
-    Left = 496
-    Top = 280
-    Width = 75
-    Height = 25
-    Caption = 'REFRESH'
-    TabOrder = 15
-    OnClick = btn6Click
   end
 end

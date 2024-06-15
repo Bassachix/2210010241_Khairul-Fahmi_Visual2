@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2024 at 05:02 AM
+-- Generation Time: Jun 15, 2024 at 08:12 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -119,12 +119,12 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id`, `name`) VALUES
-(1, 'Smartphone'),
-(2, 'Laptop'),
+(1, 'SMARTPHONE'),
+(2, 'LAPTOP'),
 (3, 'TV'),
-(4, 'Kamera'),
-(5, 'Aksesoris Elektronik'),
-(7, 'iwak');
+(4, 'KAMERA'),
+(5, 'AKSESORIS ELEKTRONIK'),
+(8, 'IWAK');
 
 -- --------------------------------------------------------
 
@@ -146,11 +146,11 @@ CREATE TABLE `kustomer` (
 --
 
 INSERT INTO `kustomer` (`id`, `nik`, `name`, `telp`, `email`, `alamat`) VALUES
-(1, 123456, 'Budi Santoso', '08123456789', 'budi@gmail.com', 'Jl. Diponegoro No. 123, Jakarta'),
-(2, 234567, 'Dewi Rahayu', '08234567890', 'dewi@gmail.com', 'Jl. Sudirman No. 45, Bandung'),
-(3, 345678, 'Citra Wijaya', '08345678901', 'citra@gmail.com', 'Jl. Pahlawan No. 67, Surabaya'),
-(4, 456789, 'Ahmad Subagyo', '08456789012', 'ahmad@gmail.com', 'Jl. Gajah Mada No. 89, Yogyakarta'),
-(5, 567890, 'Eka Putri', '08567890123', 'eka@gmail.com', 'Jl. Ahmad Yani No. 90, Semarang');
+(1, 123456, 'BUDI SANTOSO', '08123456789', 'budi@gmail.com', 'Jl. Diponegoro No. 123, Jakarta'),
+(2, 234567, 'DEWI RAHAYU', '08234567890', 'dewi@gmail.com', 'Jl. Sudirman No. 45, Bandung'),
+(3, 345678, 'CITRA WIJAYA', '08345678901', 'citra@gmail.com', 'Jl. Pahlawan No. 67, Surabaya'),
+(4, 456789, 'AHMAD SUBAGYO', '08456789012', 'ahmad@gmail.com', 'Jl. Gajah Mada No. 89, Yogyakarta'),
+(5, 567890, 'EKA PUTRI', '08567890123', 'eka@gmail.com', 'Jl. Ahmad Yani No. 90, Semarang');
 
 -- --------------------------------------------------------
 
@@ -225,11 +225,11 @@ CREATE TABLE `satuan` (
 --
 
 INSERT INTO `satuan` (`id`, `name`, `deskripsi`) VALUES
-(1, 'Unit', 'Satuan unit produk'),
-(2, 'Pcs', 'Satuan dalam jumlah potongan untuk produk'),
-(3, 'Set', 'Satuan untuk kumpulan produk elektronik'),
-(4, 'Meter', 'Satuan panjang untuk kabel dan perlengkapan'),
-(5, 'Pack', 'Satuan untuk paket produk');
+(1, 'UNIT', 'Satuan unit produk'),
+(2, 'PCS', 'Satuan dalam jumlah potongan untuk produk'),
+(3, 'SET', 'Satuan untuk kumpulan produk elektronik'),
+(4, 'METER', 'Satuan panjang untuk kabel dan perlengkapan'),
+(5, 'PACK', 'Satuan untuk paket produk');
 
 -- --------------------------------------------------------
 
@@ -255,11 +255,11 @@ CREATE TABLE `supplier` (
 --
 
 INSERT INTO `supplier` (`id`, `nik`, `name`, `telp`, `email`, `alamat`, `perusahaan`, `nama_bank`, `nama_akun_bank`, `no_akun_bank`) VALUES
-(1, 4512341, 'Samsudin\n', '085677773456\n', 'elekjaya@gmail.com\n', 'Jl. Gatot Subroto No. 123, Jakarta', 'PT. Elektronik Jaya\n', 'Bank Central Asia (BCA)', 'PT. Elektronik Jaya', '789-456-123\n'),
-(2, 8769083, 'Mojokerto\n', '081378894576\n', 'teknoman@gmail.com\n', 'Jl. Asia Afrika No. 45, Bandung', 'CV. Tekno Mandiri\n', 'Bank Mandiri', 'CV. Tekno Mandiri', '654-321-987\n'),
-(3, 3342412, 'Wijaya\n', '081345237689\n', 'maju@gmail.com\n', 'Jl. Ahmad Yani No. 67, Surabaya', 'UD. Maju Jaya\n', 'Bank Negara Indonesia (BNI)', 'UD. Maju Jaya', '321-654-789\n'),
-(4, 6732434, 'Udin Kepso\n', '085434235645\n', 'cemerlang@gmail.com\n', 'Jl. Pahlawan No. 89, Yogyakarta', 'PT. Cemerlang Teknologi\n', 'Bank Rakyat Indonesia (BRI)', 'PT. Cemerlang Teknologi', '987-654-321\n'),
-(5, 4352345, 'Rusdi\n', '087589765643\n', 'gemilang@gmail.com\n', 'Jl. Diponegoro No. 90, Semarang', 'CV. Gemilang Elektronik\n', 'Bank Tabungan Negara (BTN)', 'CV. Gemilang Elektronik', '456-789-123\n');
+(1, 4512341, 'SAMSUDIN\n', '085677773456\n', 'elekjaya@gmail.com\n', 'Jl. Gatot Subroto No. 123, Jakarta', 'PT. Elektronik Jaya\n', 'Bank Central Asia (BCA)', 'PT. Elektronik Jaya', '789-456-123\n'),
+(2, 8769083, 'MOJOKERTO\n', '081378894576\n', 'teknoman@gmail.com\n', 'Jl. Asia Afrika No. 45, Bandung', 'CV. Tekno Mandiri\n', 'Bank Mandiri', 'CV. Tekno Mandiri', '654-321-987\n'),
+(3, 3342412, 'WIJAYA\n', '081345237689\n', 'maju@gmail.com\n', 'Jl. Ahmad Yani No. 67, Surabaya', 'UD. Maju Jaya\n', 'Bank Negara Indonesia (BNI)', 'UD. Maju Jaya', '321-654-789\n'),
+(4, 6732434, 'UDIN KEPSO\n', '085434235645\n', 'cemerlang@gmail.com\n', 'Jl. Pahlawan No. 89, Yogyakarta', 'PT. Cemerlang Teknologi\n', 'Bank Rakyat Indonesia (BRI)', 'PT. Cemerlang Teknologi', '987-654-321\n'),
+(5, 4352345, 'RUSDI\n', '087589765643\n', 'gemilang@gmail.com\n', 'Jl. Diponegoro No. 90, Semarang', 'CV. Gemilang Elektronik\n', 'Bank Tabungan Negara (BTN)', 'CV. Gemilang Elektronik', '456-789-123\n');
 
 -- --------------------------------------------------------
 
@@ -285,11 +285,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nik`, `username`, `full_name`, `password`, `role`, `email`, `telp`, `alamat`, `is_active`) VALUES
-(1, 138427, 'bsantoso', 'Cahyanto\n', 'password123', 'Owner', 'yanto@gmail.com\n', '08123451112', 'Jl. Merpati No. 10, Kel. Mawar, Kec. Surya, Kota Makmur\n', 'active'),
-(2, 126945, 'ejogon', 'Ejo Gonjales', 'dewi1234', 'Admin', 'mojo@gmail.com\n', '08379643210', 'Perumahan Bintang Indah Blok C3 No. 15, Desa Anggrek, Kec. Bunga Sejahtera, Kab. Cahaya\n', 'active'),
-(3, 791528, 'citrales', 'Citra Lestari', 'citra5678', 'Admin', 'clea@gmail.com\n', '08765314209', 'Komplek Permata Hijau No. 8, RT 05/RW 02, Kel. Puri Indah, Kec. Jaya Sentosa, Kota Mutiara\n', 'active'),
-(4, 746291, 'asubagyo', 'Ahmad Sifudin', 'ahmad7890', 'Karyawan', 'sifudin@gmail.com\n', '08992467531', 'Jl. Flamboyan Raya No. 22A, Perumahan Mawar Asri, Kel. Melati, Kec. Dahlia, Kota Ramayana\n', 'active'),
-(5, 823615, 'esari', 'Erna Sari\n', 'eka12345', 'Karyawan', 'ersari@gmail.com\n', '08216795432', 'Cluster Bougenville Kav. 17, RT 08/RW 03, Kel. Cendana, Kec. Anggrek, Kota Berseri\n', 'active');
+(1, 138427, 'bsantoso', 'CAHYANTO\n', 'password123', 'Owner', 'yanto@gmail.com\n', '08123451112', 'Jl. Merpati No. 10, Kel. Mawar, Kec. Surya, Kota Makmur\n', 'active'),
+(2, 126945, 'ejogon', 'EJO GONJALES', 'dewi1234', 'Admin', 'mojo@gmail.com\n', '08379643210', 'Perumahan Bintang Indah Blok C3 No. 15, Desa Anggrek, Kec. Bunga Sejahtera, Kab. Cahaya\n', 'active'),
+(3, 791528, 'citrales', 'CITRA LESTARI', 'citra5678', 'Admin', 'clea@gmail.com\n', '08765314209', 'Komplek Permata Hijau No. 8, RT 05/RW 02, Kel. Puri Indah, Kec. Jaya Sentosa, Kota Mutiara\n', 'active'),
+(4, 746291, 'asubagyo', 'AHMAD SIFUDIN', 'ahmad7890', 'Karyawan', 'sifudin@gmail.com\n', '08992467531', 'Jl. Flamboyan Raya No. 22A, Perumahan Mawar Asri, Kel. Melati, Kec. Dahlia, Kota Ramayana\n', 'active'),
+(5, 823615, 'esari', 'ERNA SARI\n', 'eka12345', 'Karyawan', 'ersari@gmail.com\n', '08216795432', 'Cluster Bougenville Kav. 17, RT 08/RW 03, Kel. Cendana, Kec. Anggrek, Kota Berseri\n', 'active');
 
 --
 -- Indexes for dumped tables
@@ -393,13 +393,13 @@ ALTER TABLE `detail_jual`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `kustomer`
 --
 ALTER TABLE `kustomer`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pembelian`
@@ -417,19 +417,19 @@ ALTER TABLE `penjualan`
 -- AUTO_INCREMENT for table `satuan`
 --
 ALTER TABLE `satuan`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

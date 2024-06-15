@@ -11,11 +11,12 @@ object Form2: TForm2
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   PixelsPerInch = 96
   TextHeight = 13
   object btn1: TButton
-    Left = 56
-    Top = 80
+    Left = 64
+    Top = 72
     Width = 75
     Height = 25
     Caption = 'LOGIN'
@@ -23,7 +24,7 @@ object Form2: TForm2
     OnClick = btn1Click
   end
   object edt1: TEdit
-    Left = 56
+    Left = 64
     Top = 40
     Width = 121
     Height = 21

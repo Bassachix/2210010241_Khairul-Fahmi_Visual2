@@ -28,6 +28,7 @@ type
     lbl1: TLabel;
     lbl2: TLabel;
     lbl3: TLabel;
+    mniUSER1: TMenuItem;
     procedure mniLOGIN1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure mniLOGOUT1Click(Sender: TObject);
@@ -36,6 +37,7 @@ type
     procedure mniSUPPLIER1Click(Sender: TObject);
     procedure mniBARANG1Click(Sender: TObject);
     procedure mniKUSTOMER1Click(Sender: TObject);
+    procedure mniUSER1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -94,6 +96,11 @@ end;
 procedure TForm1.mniKUSTOMER1Click(Sender: TObject);
 begin
   Form9.Show;
+end;
+
+procedure TForm1.mniUSER1Click(Sender: TObject);
+begin
+  Form6.Show;
 end;
 
 end.

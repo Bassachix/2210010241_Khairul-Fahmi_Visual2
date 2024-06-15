@@ -1,8 +1,8 @@
 object Form3: TForm3
-  Left = 491
-  Top = 310
-  Width = 565
-  Height = 250
+  Left = 577
+  Top = 296
+  Width = 368
+  Height = 317
   Caption = 'KATEGORI'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,14 +11,16 @@ object Form3: TForm3
   Font.Name = 'Tahoma'
   Font.Style = [fsBold]
   OldCreateOrder = False
+  Position = poScreenCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
     Left = 24
     Top = 16
-    Width = 28
+    Width = 29
     Height = 13
-    Caption = 'NAME'
+    Caption = 'NAMA'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -28,10 +30,10 @@ object Form3: TForm3
   end
   object lbl2: TLabel
     Left = 24
-    Top = 176
-    Width = 79
+    Top = 248
+    Width = 80
     Height = 13
-    Caption = 'MASUKAN NAME'
+    Caption = 'MASUKAN NAMA'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -40,9 +42,9 @@ object Form3: TForm3
     ParentFont = False
   end
   object edt1: TEdit
-    Left = 72
+    Left = 64
     Top = 16
-    Width = 161
+    Width = 193
     Height = 21
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -50,15 +52,16 @@ object Form3: TForm3
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    ReadOnly = True
     TabOrder = 0
+    OnKeyPress = edt1KeyPress
   end
   object btn1: TButton
-    Left = 152
+    Left = 24
     Top = 48
     Width = 75
     Height = 25
-    Caption = 'INSERT'
+    Caption = 'SIMPAN'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -69,11 +72,12 @@ object Form3: TForm3
     OnClick = btn1Click
   end
   object btn2: TButton
-    Left = 152
-    Top = 80
+    Left = 104
+    Top = 48
     Width = 75
     Height = 25
-    Caption = 'UPDATE'
+    Caption = 'UBAH'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -84,11 +88,12 @@ object Form3: TForm3
     OnClick = btn2Click
   end
   object btn3: TButton
-    Left = 112
-    Top = 112
+    Left = 184
+    Top = 48
     Width = 75
     Height = 25
-    Caption = 'DELETE'
+    Caption = 'HAPUS'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -99,9 +104,9 @@ object Form3: TForm3
     OnClick = btn3Click
   end
   object dbgrd1: TDBGrid
-    Left = 240
-    Top = 16
-    Width = 305
+    Left = 24
+    Top = 88
+    Width = 313
     Height = 145
     DataSource = DataModule4.ds_kategori
     Font.Charset = DEFAULT_CHARSET
@@ -120,8 +125,8 @@ object Form3: TForm3
   end
   object edt2: TEdit
     Left = 112
-    Top = 176
-    Width = 153
+    Top = 248
+    Width = 225
     Height = 21
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -130,13 +135,14 @@ object Form3: TForm3
     Font.Style = []
     ParentFont = False
     TabOrder = 5
+    OnChange = edt2Change
   end
-  object btn4: TButton
-    Left = 272
-    Top = 176
+  object btn6: TButton
+    Left = 264
+    Top = 16
     Width = 75
     Height = 25
-    Caption = 'CARI'
+    Caption = '&BARU'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -144,14 +150,15 @@ object Form3: TForm3
     Font.Style = []
     ParentFont = False
     TabOrder = 6
-    OnClick = btn4Click
+    OnClick = btn6Click
   end
-  object btn5: TButton
-    Left = 352
-    Top = 176
+  object btn7: TButton
+    Left = 264
+    Top = 48
     Width = 75
     Height = 25
-    Caption = 'REFRESH'
+    Caption = '&BATAL'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -159,36 +166,6 @@ object Form3: TForm3
     Font.Style = []
     ParentFont = False
     TabOrder = 7
-    OnClick = btn5Click
-  end
-  object btn6: TButton
-    Left = 72
-    Top = 48
-    Width = 75
-    Height = 25
-    Caption = 'NEW'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 8
-    OnClick = btn6Click
-  end
-  object btn7: TButton
-    Left = 72
-    Top = 80
-    Width = 75
-    Height = 25
-    Caption = 'BATAL'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 9
     OnClick = btn7Click
   end
 end

@@ -26,7 +26,6 @@ type
     edt6: TEdit;
     lbl6: TLabel;
     btn5: TButton;
-    btn6: TButton;
     procedure dbgrd1CellClick(Column: TColumn);
     procedure btn1Click(Sender: TObject);
     procedure btn5Click(Sender: TObject);
@@ -34,6 +33,12 @@ type
     procedure btn2Click(Sender: TObject);
     procedure btn3Click(Sender: TObject);
     procedure btn4Click(Sender: TObject);
+    procedure posisiAwalKustomer;
+    procedure bersihKustomer;
+    procedure edt6Change(Sender: TObject);
+    procedure edt2KeyPress(Sender: TObject; var Key: Char);
+    procedure FormShow(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -43,7 +48,6 @@ type
 var
   Form9: TForm9;
   a: string;
-  searchText: string;
 
 implementation
 
@@ -60,38 +64,59 @@ begin
   edt4.Text := DataModule4.ZQuery6.Fields[4].AsString;
   edt5.Text := DataModule4.ZQuery6.Fields[5].AsString;
   a := DataModule4.ZQuery6.Fields[0].AsString;
+
+  edt2.Text := UpperCase(edt2.Text);
+
+  edt1.Enabled := True;
+  edt2.Enabled := True;
+  edt3.Enabled := True;
+  edt4.Enabled := True;
+  edt5.Enabled := True;
+
+  btn1.Enabled := False;
+  btn2.Enabled := False;
+  btn3.Enabled := True;
+  btn4.Enabled := True;
+  btn5.Enabled := True;
 end;
 
 procedure TForm9.btn1Click(Sender: TObject);
 begin
-  edt1.ReadOnly := False;
-  edt2.ReadOnly := False;
-  edt3.ReadOnly := False;
-  edt4.ReadOnly := False;
-  edt5.ReadOnly := False;
+  bersihKustomer;
+  edt1.Enabled := True;
+  edt2.Enabled := True;
+  edt3.Enabled := True;
+  edt4.Enabled := True;
+  edt5.Enabled := True;
 
-  edt1.Text := '';
-  edt2.Text := '';
-  edt3.Text := '';
-  edt4.Text := '';
-  edt5.Text := '';
+  btn1.Enabled := False;
+  btn2.Enabled := True;
+  btn3.Enabled := False;
+  btn4.Enabled := True;
+  btn5.Enabled := False;
 end;
 
 procedure TForm9.btn5Click(Sender: TObject);
 begin
-  searchText := edt6.Text;
+  if MessageDlg('Apakah Anda Yakin Ingin Menghapus Data Ini', mtWarning, [mbYes,mbNo], 0) = mrYes then
+    begin  // Hapus
+      with DataModule4.ZQuery6 do
+        begin
+          SQL.Clear;
+          SQL.Add('delete from kustomer where id = "'+a+'"');
+          ExecSQL;
 
-  if edt6.Text = '' then
+          SQL.Clear;
+          SQL.Add('select * from kustomer');
+          Open;
+        end;
+        ShowMessage('Data Berhasil Dihapus!');
+    end
+  else
     begin
-      ShowMessage('Masukkan teks untuk melakukan pencarian');
-      Exit;
+      ShowMessage('Data Batal Dihapus');
     end;
-
-  DataModule4.ZQuery6.Close;
-  DataModule4.ZQuery6.SQL.Clear;
-  DataModule4.ZQuery6.SQL.Text := 'SELECT * FROM kustomer WHERE name LIKE :searchText';
-  DataModule4.ZQuery6.Params.ParamByName('searchText').AsString := '%' + searchText + '%';
-  DataModule4.ZQuery6.Open;
+  posisiAwalKustomer;
 end;
 
 procedure TForm9.btn6Click(Sender: TObject);
@@ -105,76 +130,104 @@ end;
 
 procedure TForm9.btn2Click(Sender: TObject);
 begin
-  DataModule4.ZQuery6.SQL.Clear;
-  DataModule4.ZQuery6.SQL.Add('insert into kustomer values(null, "'+edt1.Text+'", "'+edt2.Text+'", "'+edt3.Text+'", "'+edt4.Text+'", "'+edt5.Text+'")');
-  DataModule4.ZQuery6.ExecSQL;
+  if (edt1.Text = '') or (edt2.Text = '') or (edt3.Text = '') or (edt4.Text = '') or (edt5.Text = '') then // Validasi
+    begin
+      ShowMessage('Tidak Boleh Ada Kolom yang Kosong!');
+    end
+  else
+    if DataModule4.ZQuery6.Locate('nik', edt1.Text,[]) then
+      begin
+        ShowMessage('NIK ' + edt1.Text + ' Sudah Ada di Dalam Sistem');
+      end
+    else
+      begin
+        with DataModule4.ZQuery6 do
+          begin
+            SQL.Clear;
+            SQL.Add('insert into kustomer values(null, "' + edt1.Text + '", "' + edt2.Text + '", "' + edt3.Text + '", "' + edt4.Text + '", "' + edt5.Text + '")');
+            ExecSQL;
 
-  edt1.Text := '';
-  edt2.Text := '';
-  edt3.Text := '';
-  edt4.Text := '';
-  edt5.Text := '';
-
-  edt1.ReadOnly := True;
-  edt2.ReadOnly := True;
-  edt3.ReadOnly := True;
-  edt4.ReadOnly := True;
-  edt5.ReadOnly := True;
-
-  DataModule4.ZQuery6.SQL.Clear;
-  DataModule4.ZQuery6.SQL.Add('select * from kustomer');
-  DataModule4.ZQuery6.Open;
-  ShowMessage('Data Berhasil Disimpan');
+            SQL.Clear;
+            SQL.Add('select * from kustomer');
+            Open;
+          end;
+          ShowMessage('Data Berhasil Disimpan!');
+      end;
+  posisiAwalKustomer;
 end;
 
 procedure TForm9.btn3Click(Sender: TObject);
 begin
-  DataModule4.ZQuery5.SQL.Clear;
-  DataModule4.ZQuery5.SQL.Add('update kustomer set nik = "'+edt1.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery5.ExecSQL;
+  if (edt1.Text = '') or (edt2.Text = '') or (edt3.Text = '') or (edt4.Text = '') or (edt5.Text = '') then // Validasi
+    begin
+      ShowMessage('Tidak Boleh Ada Kolom yang Kosong!');
+    end
+  else
+     begin // Ubah
+        with DataModule4.ZQuery6 do
+          begin
+            SQL.Clear;
+            SQL.Add('update kustomer set nik = "'+edt1.Text+'", name = "'+edt2.text+'", telp = "'+edt3.text+'", email = "'+edt4.text+'", alamat = "'+edt5.text+'" where id = "'+a+'"');
+            ExecSQL;
 
-  DataModule4.ZQuery5.SQL.Clear;
-  DataModule4.ZQuery5.SQL.Add('update kustomer set name = "'+edt2.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery5.ExecSQL;
-
-  DataModule4.ZQuery5.SQL.Clear;
-  DataModule4.ZQuery5.SQL.Add('update kustomer set telp = "'+edt3.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery5.ExecSQL;
-
-  DataModule4.ZQuery5.SQL.Clear;
-  DataModule4.ZQuery5.SQL.Add('update kustomer set email = "'+edt4.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery5.ExecSQL;
-
-  DataModule4.ZQuery5.SQL.Clear;
-  DataModule4.ZQuery5.SQL.Add('update kustomer set alamat = "'+edt5.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery5.ExecSQL;
-
-  edt1.Text := '';
-  edt2.Text := '';
-  edt3.Text := '';
-  edt4.Text := '';
-  edt5.Text := '';
-
-  DataModule4.ZQuery5.SQL.Clear;
-  DataModule4.ZQuery5.SQL.Add('select * from kustomer');
-  DataModule4.ZQuery5.Open;
-  ShowMessage('Data Berhasil Diupdate');
+            SQL.Clear;
+            SQL.Add('select * from kustomer');
+            Open;
+          end;
+          ShowMessage('Data Berhasil Diubah!');
+     end;
+  posisiAwalKustomer;
 end;
 
 procedure TForm9.btn4Click(Sender: TObject);
 begin
-  edt1.Text := '';
-  edt2.Text := '';
-  edt3.Text := '';
-  edt4.Text := '';
-  edt5.Text := '';
-  edt1.SetFocus;
+  bersihKustomer;
+  posisiAwalKustomer;
+end;
 
-  edt1.ReadOnly := True;
-  edt2.ReadOnly := True;
-  edt3.ReadOnly := True;
-  edt4.ReadOnly := True;
-  edt5.ReadOnly := True;
+procedure TForm9.posisiAwalKustomer;
+begin
+  bersihKustomer;
+  edt1.Enabled := False;
+  edt2.Enabled := False;
+  edt3.Enabled := False;
+  edt4.Enabled := False;
+  edt5.Enabled := False;
+
+  btn1.Enabled := True;
+  btn2.Enabled := False;
+  btn3.Enabled := False;
+  btn4.Enabled := False;
+  btn5.Enabled := False;
+end;
+
+procedure TForm9.bersihKustomer;
+begin
+  edt1.Clear;
+  edt2.Clear;
+  edt3.Clear;
+  edt4.Clear;
+  edt5.Clear;
+end;
+
+procedure TForm9.edt6Change(Sender: TObject);
+begin
+  with DataModule4.ZQuery6 do
+    begin
+      SQL.Clear;
+      SQL.Add('select * from kustomer where name like "%'+edt6.Text+'%"');
+      Open;
+    end;
+end;
+
+procedure TForm9.edt2KeyPress(Sender: TObject; var Key: Char);
+begin
+  Key := UpCase(Key);
+end;
+
+procedure TForm9.FormShow(Sender: TObject);
+begin
+  posisiAwalKustomer;
 end;
 
 end.

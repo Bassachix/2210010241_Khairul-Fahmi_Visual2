@@ -1,8 +1,8 @@
 object Form9: TForm9
-  Left = 462
-  Top = 288
-  Width = 577
-  Height = 278
+  Left = 278
+  Top = 237
+  Width = 562
+  Height = 253
   Caption = 'KUSTOMER'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,8 @@ object Form9: TForm9
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
@@ -23,9 +25,9 @@ object Form9: TForm9
   object lbl2: TLabel
     Left = 16
     Top = 48
-    Width = 28
+    Width = 29
     Height = 13
-    Caption = 'NAME'
+    Caption = 'NAMA'
   end
   object lbl3: TLabel
     Left = 16
@@ -49,18 +51,17 @@ object Form9: TForm9
     Caption = 'ALAMAT'
   end
   object lbl6: TLabel
-    Left = 16
+    Left = 128
     Top = 176
-    Width = 85
+    Width = 86
     Height = 13
-    Caption = 'MASUKKAN NAME'
+    Caption = 'MASUKKAN NAMA'
   end
   object edt1: TEdit
     Left = 72
     Top = 16
     Width = 145
     Height = 21
-    ReadOnly = True
     TabOrder = 0
   end
   object edt2: TEdit
@@ -68,15 +69,14 @@ object Form9: TForm9
     Top = 48
     Width = 145
     Height = 21
-    ReadOnly = True
     TabOrder = 1
+    OnKeyPress = edt2KeyPress
   end
   object edt3: TEdit
     Left = 72
     Top = 80
     Width = 145
     Height = 21
-    ReadOnly = True
     TabOrder = 2
   end
   object edt4: TEdit
@@ -84,7 +84,6 @@ object Form9: TForm9
     Top = 112
     Width = 145
     Height = 21
-    ReadOnly = True
     TabOrder = 3
   end
   object edt5: TEdit
@@ -92,50 +91,49 @@ object Form9: TForm9
     Top = 144
     Width = 145
     Height = 21
-    ReadOnly = True
     TabOrder = 4
   end
   object btn1: TButton
-    Left = 240
-    Top = 176
+    Left = 464
+    Top = 144
     Width = 75
     Height = 25
-    Caption = 'NEW'
+    Caption = '&BARU'
     TabOrder = 5
     OnClick = btn1Click
   end
   object btn2: TButton
-    Left = 320
-    Top = 176
+    Left = 224
+    Top = 144
     Width = 75
     Height = 25
-    Caption = 'INSERT'
+    Caption = 'SIMPAN'
     TabOrder = 6
     OnClick = btn2Click
   end
   object btn3: TButton
-    Left = 400
-    Top = 176
+    Left = 304
+    Top = 144
     Width = 75
     Height = 25
-    Caption = 'UPDATE'
+    Caption = 'UBAH'
     TabOrder = 7
     OnClick = btn3Click
   end
   object btn4: TButton
-    Left = 480
+    Left = 464
     Top = 176
     Width = 75
     Height = 25
-    Caption = 'BATAL'
+    Caption = '&BATAL'
     TabOrder = 8
     OnClick = btn4Click
   end
   object dbgrd1: TDBGrid
     Left = 224
     Top = 16
-    Width = 329
-    Height = 145
+    Width = 313
+    Height = 121
     DataSource = DataModule4.ds_kustomer
     TabOrder = 9
     TitleFont.Charset = DEFAULT_CHARSET
@@ -146,28 +144,20 @@ object Form9: TForm9
     OnCellClick = dbgrd1CellClick
   end
   object edt6: TEdit
-    Left = 112
+    Left = 224
     Top = 176
-    Width = 121
+    Width = 233
     Height = 21
     TabOrder = 10
+    OnChange = edt6Change
   end
   object btn5: TButton
-    Left = 160
-    Top = 208
+    Left = 384
+    Top = 144
     Width = 75
     Height = 25
-    Caption = 'CARI'
+    Caption = 'HAPUS'
     TabOrder = 11
     OnClick = btn5Click
-  end
-  object btn6: TButton
-    Left = 240
-    Top = 208
-    Width = 75
-    Height = 25
-    Caption = 'REFRESH'
-    TabOrder = 12
-    OnClick = btn6Click
   end
 end

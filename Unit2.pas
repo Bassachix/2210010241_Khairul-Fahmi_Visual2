@@ -31,23 +31,25 @@ procedure TForm2.btn1Click(Sender: TObject);
 begin
   if edt1.Text = 'pemilik' then
     begin
-      edt1.Text := '';
+      edt1.Clear;
       Form1.mm1.Items[1].Visible := False;
       Form1.mm1.Items[2].Visible := False;
       Form1.mm1.Items[3].Visible := True;
       Form2.Close;
     end
-    else if edt1.Text = 'admin' then
+  else
+    if edt1.Text = 'admin' then
       begin
-        edt1.Text := '';
+        edt1.Clear;
         Form1.mm1.Items[1].Visible := True;
         Form1.mm1.Items[2].Visible := False;
         Form1.mm1.Items[3].Visible := False;
         Form2.Close;
       end
-      else if edt1.Text = 'kasir' then
+    else
+      if edt1.Text = 'kasir' then
         begin
-          edt1.Text := '';
+          edt1.Clear;
           Form1.mm1.Items[1].Visible := False;
           Form1.mm1.Items[2].Visible := True;
           Form1.mm1.Items[3].Visible := False;

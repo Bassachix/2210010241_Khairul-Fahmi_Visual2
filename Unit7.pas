@@ -27,14 +27,13 @@ type
     btn1: TButton;
     btn2: TButton;
     btn3: TButton;
-    btn4: TButton;
     dbgrd1: TDBGrid;
     lbl9: TLabel;
     edt9: TEdit;
-    btn5: TButton;
     edt10: TEdit;
     lbl10: TLabel;
-    btn6: TButton;
+    btn5: TButton;
+    btn4: TButton;
     procedure dbgrd1CellClick(Column: TColumn);
     procedure btn1Click(Sender: TObject);
     procedure btn4Click(Sender: TObject);
@@ -42,6 +41,11 @@ type
     procedure btn3Click(Sender: TObject);
     procedure btn6Click(Sender: TObject);
     procedure btn5Click(Sender: TObject);
+    procedure posisiAwalSupplier;
+    procedure bersihSupplier;
+    procedure FormShow(Sender: TObject);
+    procedure edt10Change(Sender: TObject);
+    procedure edt2KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -51,7 +55,6 @@ type
 var
   Form7: TForm7;
   a: String;
-  searchText: string;
 
 implementation
 
@@ -70,140 +73,105 @@ begin
   edt6.Text := DataModule4.ZQuery4.Fields[6].AsString;
   edt7.Text := DataModule4.ZQuery4.Fields[7].AsString;
   edt8.Text := DataModule4.ZQuery4.Fields[8].AsString;
+  edt9.Text := DataModule4.ZQuery4.Fields[9].AsString;
   a := DataModule4.ZQuery4.Fields[0].AsString;
+
+  edt2.Text := UpperCase(edt2.Text);
+
+  edt1.Enabled := True;
+  edt2.Enabled := True;
+  edt3.Enabled := True;
+  edt4.Enabled := True;
+  edt5.Enabled := True;
+  edt6.Enabled := True;
+  edt7.Enabled := True;
+  edt8.Enabled := True;
+  edt9.Enabled := True;
+
+  btn1.Enabled := False;
+  btn2.Enabled := False;
+  btn3.Enabled := True;
+  btn4.Enabled := True;
+  btn5.Enabled := True;
 end;
 
 procedure TForm7.btn1Click(Sender: TObject);
 begin
-  edt1.ReadOnly := False;
-  edt2.ReadOnly := False;
-  edt3.ReadOnly := False;
-  edt4.ReadOnly := False;
-  edt5.ReadOnly := False;
-  edt6.ReadOnly := False;
-  edt7.ReadOnly := False;
-  edt8.ReadOnly := False;
-  edt9.ReadOnly := False;
+  bersihSupplier;
+  edt1.Enabled := True;
+  edt2.Enabled := True;
+  edt3.Enabled := True;
+  edt4.Enabled := True;
+  edt5.Enabled := True;
+  edt6.Enabled := True;
+  edt7.Enabled := True;
+  edt8.Enabled := True;
+  edt9.Enabled := True;
 
-  edt1.Text := '';
-  edt2.Text := '';
-  edt3.Text := '';
-  edt4.Text := '';
-  edt5.Text := '';
-  edt6.Text := '';
-  edt7.Text := '';
-  edt8.Text := '';
-  edt9.Text := '';
+  btn1.Enabled := False;
+  btn2.Enabled := True;
+  btn3.Enabled := False;
+  btn4.Enabled := True;
+  btn5.Enabled := False;
 end;
 
 procedure TForm7.btn4Click(Sender: TObject);
 begin
-  edt1.Text := '';
-  edt2.Text := '';
-  edt3.Text := '';
-  edt4.Text := '';
-  edt5.Text := '';
-  edt6.Text := '';
-  edt7.Text := '';
-  edt8.Text := '';
-  edt9.Text := '';
-  edt1.SetFocus;
-
-  edt1.ReadOnly := True;
-  edt2.ReadOnly := True;
-  edt3.ReadOnly := True;
-  edt4.ReadOnly := True;
-  edt5.ReadOnly := True;
-  edt6.ReadOnly := True;
-  edt7.ReadOnly := True;
-  edt8.ReadOnly := True;
-  edt9.ReadOnly := True;
+  bersihSupplier;
+  posisiAwalSupplier;
 end;
 
 procedure TForm7.btn2Click(Sender: TObject);
 begin
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('insert into supplier values(null, "'+edt1.Text+'", "'+edt2.Text+'", "'+edt3.Text+'", "'+edt4.Text+'", "'+edt5.Text+'", "'+edt6.Text+'", "'+edt7.Text+'", "'+edt8.Text+'", "'+edt9.Text+'")');
-  DataModule4.ZQuery4.ExecSQL;
+  if (edt1.Text = '') or (edt2.Text = '') or (edt3.Text = '') or (edt4.Text = '') or
+     (edt5.Text = '') or (edt6.Text = '') or (edt7.Text = '') or (edt8.Text = '')or (edt9.Text = '') then // Validasi
+    begin
+      ShowMessage('Tidak Boleh Ada Kolom yang Kosong!');
+    end
+  else
+    if DataModule4.ZQuery4.Locate('nik', edt1.Text,[]) then
+      begin
+        ShowMessage('NIK ' + edt1.Text + ' Sudah Ada di Dalam Sistem');
+      end
+    else
+      begin
+        with DataModule4.ZQuery4 do
+          begin
+            SQL.Clear;
+            SQL.Add('insert into supplier values(null, "' + edt1.Text + '", "' + edt2.Text + '", "' + edt3.Text + '", "' + edt4.Text + '", "' + edt5.Text + '", "' + edt6.Text + '", "' + edt7.Text + '", "' + edt8.Text + '", "'+ edt9.Text +'")');
+            ExecSQL;
 
-  edt1.Text := '';
-  edt2.Text := '';
-  edt3.Text := '';
-  edt4.Text := '';
-  edt5.Text := '';
-  edt6.Text := '';
-  edt7.Text := '';
-  edt8.Text := '';
-  edt9.Text := '';
-
-  edt1.ReadOnly := True;
-  edt2.ReadOnly := True;
-  edt3.ReadOnly := True;
-  edt4.ReadOnly := True;
-  edt5.ReadOnly := True;
-  edt6.ReadOnly := True;
-  edt7.ReadOnly := True;
-  edt8.ReadOnly := True;
-  edt9.ReadOnly := True;
-
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('select * from supplier');
-  DataModule4.ZQuery4.Open;
-  ShowMessage('Data Berhasil Disimpan');
+            SQL.Clear;
+            SQL.Add('select * from supplier');
+            Open;
+          end;
+          ShowMessage('Data Berhasil Disimpan!');
+      end;
+  posisiAwalSupplier;
 end;
 
 procedure TForm7.btn3Click(Sender: TObject);
 begin
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('update supplier set nik = "'+edt1.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery4.ExecSQL;
+  if (edt1.Text = '') or (edt2.Text = '') or (edt3.Text = '') or (edt4.Text = '') or
+     (edt5.Text = '') or (edt6.Text = '') or (edt7.Text = '') or (edt8.Text = '')or (edt9.Text = '') then // Validasi
+    begin
+      ShowMessage('Tidak Boleh Ada Kolom yang Kosong!');
+    end
+  else
+     begin // Ubah
+        with DataModule4.ZQuery4 do
+          begin
+            SQL.Clear;
+            SQL.Add('update supplier set nik = "'+edt1.Text+'", name = "'+edt2.text+'", telp = "'+edt3.text+'", email = "'+edt4.text+'", alamat = "'+edt5.text+'", perusahaan = "'+edt6.text+'", nama_bank = "'+edt7.text+'", no_akun_bank = "'+edt9.text+'" where id = "'+a+'"');
+            ExecSQL;
 
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('update supplier set name = "'+edt2.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery4.ExecSQL;
-
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('update supplier set telp = "'+edt3.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery4.ExecSQL;
-
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('update supplier set email = "'+edt4.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery4.ExecSQL;
-
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('update supplier set alamat = "'+edt5.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery4.ExecSQL;
-
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('update supplier set perusahaan = "'+edt6.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery4.ExecSQL;
-
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('update supplier set nama_bank = "'+edt7.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery4.ExecSQL;
-
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('update supplier set nama_akun_bank = "'+edt8.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery4.ExecSQL;
-
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('update supplier set no_akun_bank = "'+edt9.Text+'" where id = "'+a+'"');
-  DataModule4.ZQuery4.ExecSQL;
-
-  edt1.Text := '';
-  edt2.Text := '';
-  edt3.Text := '';
-  edt4.Text := '';
-  edt5.Text := '';
-  edt6.Text := '';
-  edt7.Text := '';
-  edt8.Text := '';
-  edt9.Text := '';
-
-  DataModule4.ZQuery4.SQL.Clear;
-  DataModule4.ZQuery4.SQL.Add('select * from supplier');
-  DataModule4.ZQuery4.Open;
-  ShowMessage('Data Berhasil Diupdate');
+            SQL.Clear;
+            SQL.Add('select * from supplier');
+            Open;
+          end;
+          ShowMessage('Data Berhasil Diubah!');
+     end;
+  posisiAwalSupplier;
 end;
 
 procedure TForm7.btn6Click(Sender: TObject);
@@ -217,19 +185,78 @@ end;
 
 procedure TForm7.btn5Click(Sender: TObject);
 begin
-  searchText := edt10.Text;
+  if MessageDlg('Apakah Anda Yakin Ingin Menghapus Data Ini', mtWarning, [mbYes,mbNo], 0) = mrYes then
+    begin  // Hapus
+      with DataModule4.ZQuery4 do
+        begin
+          SQL.Clear;
+          SQL.Add('delete from supplier where id = "'+a+'"');
+          ExecSQL;
 
-  if edt10.Text = '' then
+          SQL.Clear;
+          SQL.Add('select * from supplier');
+          Open;
+        end;
+        ShowMessage('Data Berhasil Dihapus!');
+    end
+  else
     begin
-      ShowMessage('Masukkan teks untuk melakukan pencarian');
-      Exit;
+      ShowMessage('Data Batal Dihapus');
     end;
+  posisiAwalSupplier;
+end;
 
-  DataModule4.ZQuery3.Close;
-  DataModule4.ZQuery3.SQL.Clear;
-  DataModule4.ZQuery3.SQL.Text := 'SELECT * FROM supplier WHERE full_name LIKE :searchText';
-  DataModule4.ZQuery3.Params.ParamByName('searchText').AsString := '%' + searchText + '%';
-  DataModule4.ZQuery3.Open;
+procedure TForm7.posisiAwalSupplier;
+begin
+  bersihSupplier;
+  edt1.Enabled := False;
+  edt2.Enabled := False;
+  edt3.Enabled := False;
+  edt4.Enabled := False;
+  edt5.Enabled := False;
+  edt6.Enabled := False;
+  edt7.Enabled := False;
+  edt8.Enabled := False;
+  edt9.Enabled := False;
+
+  btn1.Enabled := True;
+  btn2.Enabled := False;
+  btn3.Enabled := False;
+  btn4.Enabled := False;
+  btn5.Enabled := False;
+end;
+
+procedure TForm7.bersihSupplier;
+begin
+  edt1.Clear;
+  edt2.Clear;
+  edt3.Clear;
+  edt4.Clear;
+  edt5.Clear;
+  edt6.Clear;
+  edt7.Clear;
+  edt8.Clear;
+  edt9.Clear;
+end;
+
+procedure TForm7.FormShow(Sender: TObject);
+begin
+  posisiAwalSupplier;
+end;
+
+procedure TForm7.edt10Change(Sender: TObject);
+begin
+  with DataModule4.ZQuery4 do
+    begin
+      SQL.Clear;
+      SQL.Add('select * from supplier where name like "%'+edt10.Text+'%"');
+      Open;
+    end;
+end;
+
+procedure TForm7.edt2KeyPress(Sender: TObject; var Key: Char);
+begin
+  Key := UpCase(Key);
 end;
 
 end.
